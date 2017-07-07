@@ -1,0 +1,35 @@
+body{
+    background-color: #2E8B57;
+}
+.post_block{
+	background-color: white;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 10px;
+}
+#nome{
+	padding-left: 10px;
+	color: blue;
+}
+#postagem{
+	padding-left: 20px;
+	color: green;
+}
+.branco{
+    color: white;
+}
+a:link{ 
+    text-decoration:none !important;
+    color: black;
+}
+a:active{
+    text-decoration:none !important;
+    color: black;
+}
+a:visited{
+    text-decoration: none !important;
+    color: black;
+}/* CSS declarations go here */
+hr{
+	color: black;
+	border-color: black;
+}

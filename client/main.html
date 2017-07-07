@@ -1,0 +1,300 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Audio Descrição</title>
+
+</head>
+
+<body>
+{{> site}}
+{{> janela_cadastro}}
+{{> comentario}}
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+        });
+
+        //FUNCTION TO GET AND AUTO PLAY YOUTUBE VIDEO FROM DATATAG
+        $(".link").click(function() {
+            var theModal = $(this).data( "target" );
+            videoSRC = $(this).attr("data-theVideo"); 
+            videoSRCauto = videoSRC;
+            $(theModal+' iframe').attr('src', videoSRCauto);
+        });
+        $("#closevideo").click(function(){
+            $('#videoModal').find(' iframe').attr('src','');
+        });
+        $('#videoModal').on('hidden.bs.modal', function (e) {
+            $('#videoModal').find('iframe').attr('src','');
+        });
+    </script>
+
+</body>
+
+<template name="janela_cadastro">
+  <div class="modal fade" id="modal_form">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">        
+          </div>
+          <div class="modal-body">
+            <div>
+              <form id="form_cadastro">
+                <fieldset>
+                  <legend>Comentário</legend>
+
+                  <div class="form-group">
+                    <label for="postagem"></label>
+                    <textarea id="postagem" rows="5" cols="50"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-success">Enviar</button>
+                </fieldset>
+              </form>
+            </div>
+          </div>          
+          <div>
+            <button data-dismiss="modal" class="btn btn-warning">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>                                       
+</template>
+
+<template name="comentario">
+    <div class="container post_block">
+        <h1 class="text-center">Comentários</h1>
+        {{#if currentUser}}
+        <button id="janela_coment" class="btn btn-success">Adicionar Comentário</button>
+        {{/if}}
+        <div class="row">
+            {{#each post}}
+            <div>
+                <hr>
+                <h4 id="nome">{{nome}}</h4>
+                <h5 id="postagem">{{postagem}}</h5>
+            </div>
+            {{/each}}
+        </div>        
+    </div>
+</template>
+
+
+<template name="site">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Audio Descrição</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a target="_blank" href="http://www.uffs.edu.br/">Site da UFFS</a>
+                    </li>
+                    <li>
+                        {{> loginButtons}}
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container"><br><br>
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">TECNOLOGIA E CEGUEIRA:
+                    <br><small class="branco">A FORMAÇÃO DE PROFESSORES PARA A EDUCAÇÃO ESPECIAL</small>
+                    <br><small class="branco">Clique nas imagens para abrir os vídeos. Para fechar o vídeo aberto, clicar no botão no canto superior esquerdo da janela que se abrirá.</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Tecnologia e Cegueira</h4>
+                <p class="text-justify">
+                    Tutorial Para Formação De Professores Na Utilização De Recurso De Tecnologia Assistiva (Audiodescrição) Para Inclusão De Pessoas Cegas
+                </p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/9-G-Dq-yO6c">
+                    <img class="img-responsive img-thumbnail" src="imagens/apresentacao.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4">
+                <p class="text-justify">
+                    Acadêmicas: <a target="_blank" href="http://lattes.cnpq.br/0278554581896082">Fernanda Maria Foschiera</a>, <a target="_blank" href="http://lattes.cnpq.br/9520204415504449">Melissa Guarnieri</a> e <a target="_blank" href="http://lattes.cnpq.br/3178376286748327">Suellyn Ogliari</a>. Acesse nossos Currículos Lattes clicando em nossos nome.
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>A Educação Especial</h4>
+                <p class="text-justify">
+                    Antes de aprendermos como fazer uma Audiodescrição nas contações de história para crianças da educação infantil e anos iniciais do ensino fundamental, precisamos entender alguns conceitos básicos sobre a Educação Especial, a Deficiência visual (principalmente a cegueira), os Deficientes visuais e os recursos tecnológicos que propiciam inclusão social, a Contação de Histórias, a Formação de Professores e enfim, a Audiodescrição.
+                </p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/vvXwVD_vZnY">
+                    <img class="img-responsive img-thumbnail" src="imagens/aula2.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4">
+            <p class="text-justify">
+                    Problematização: A partir do vídeo assistido, houve ampliação no seu conceito de educação especial?  Converse com uma pessoa com deficiência e peça para ela lhe falar como é seu cotidiano. 
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/HkQZiTCtv4s">
+                    <img class="img-responsive img-thumbnail" src="imagens/aula3.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-8">
+                <h4>Deficiência Visual</h4>
+                <p class="text-justify">
+                    Problematização: no seu cotidiano, as pessoas com deficiência visual são incluídas? A cidade em que você reside tem estrutura acessível? E o seu bairro? E a escola em que você frequenta?  
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/RiN54ZR8E2Q">
+                    <img class="img-responsive img-thumbnail" src="imagens/aula4.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-8">
+                <h4>Recursos Tecnológicos</h4>
+                <p class="text-justify">
+                    Faça uma experiência com um dos softwares descritos no vídeo sobre Recursos Tecnológicos e relate (nos comentário do YouTube) como foi utilizá-lo.
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/ptD0Hkt77Ss">
+                    <img class="img-responsive img-thumbnail" src="imagens/aula5.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-8">
+                <h4>A Contação de Histórias</h4>
+                <p class="text-justify">
+                    Problematização: Contar histórias para às crianças é algo muito comum nas escolas. Então: como você contaria uma história com inúmeras imagens para uma criança cega?  
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/YKGqMArJ3qY">
+                    <img class="img-responsive img-thumbnail" src="imagens/aula6.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-8">
+                <h4>A Formação de Professores</h4>
+                <p class="text-justify">
+                    Problematização: Reflita sobre sua prática docente e se questione: você se considera um professor inclusivo?  
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>A Audiodescrição</h4>
+                <p class="text-justify">
+                    Chegamos, enfim, a parte tão esperada: A Audiodescrição. Nesse vídeo, você irá aprender o que é e quais os tipos de Audiodescrição utilizadas no Brasil.   
+                </p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/n5gdiA1Gh9c">
+                    <img class="img-responsive img-thumbnail" src="imagens/aula7.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4">
+                <p class="text-justify">
+                    Para melhor compreensão de como utilizar esse recurso, indicamos o exercício da audiodescrição com fotografias, com cenas de filme, com capas de caderno... Peça para alguém próximo a você fechar os olhos e faça uma Audiodescrição de um conteúdo visual de sua escolha. Em seguida, ao revelar a imagem, pergunte à pessoa se o que ela ouviu está coerente com o que está vendo.   
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>História Narrada</h4>
+                <p class="text-justify">
+                    Temos na sequência um exemplo de contação de história com Audiodescrição para a educação infantil ou primeiro ano do ensino fundamental. Nesse vídeo podemos perceber a utilização da Audiodescrição gravada.     
+                </p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#" class="link" data-toggle="modal" data-target="#videoModal" data-theVideo="https://www.youtube.com/embed/dLaYOa2Ucn8">
+                    <img class="img-responsive img-thumbnail" src="imagens/historia_narrada.png" alt="">
+                </a>
+            </div>
+            <div class="col-md-4">
+                <p class="text-justify">
+                    Agora é sua vez de fazer uma contação de história com audiodescrição. Dúvidas e considerações, deixe seu comentário no YouTube. 
+                </p>
+            </div>
+        </div>
+
+        <hr size="2">
+
+        <!-- /.row -->
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button type="button" id="closevideo" class="btn-warning" data-dismiss="modal" aria-hidden="true">Fechar o Vídeo</button>
+                <div id="video">
+                  <iframe id="video_content" width="100%" height="400" src=""></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</template>
